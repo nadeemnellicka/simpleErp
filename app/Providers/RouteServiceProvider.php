@@ -15,6 +15,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $namespaceCommon = 'App\Http\Erp\Common\Controllers';
+    protected $namespaceFinance = 'App\Http\Erp\Finance\Controllers';
 
     /**
      * The path to the "home" route for your application.
@@ -75,6 +77,15 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/api.php'));  
+        Route::prefix('common')
+            ->middleware('api')
+            ->namespace($this->namespaceCommon)
+            ->group(base_path('routes/Erp/Common/api.php'));  
+        Route::prefix('finance')
+            ->middleware('api')
+            ->namespace($this->namespaceFinance)
+            ->group(base_path('routes/Erp/Finance/api.php'));
+
     }
 }
