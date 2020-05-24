@@ -23,3 +23,8 @@ Route::prefix('/test')->group( function() {
 Route::post('/print','testController@index');
 Route::post('/fun','testController@fun');
 });
+
+Route::prefix('/user')->group( function() {
+Route::post('/login','LoginController@login');
+Route::post('/register','LoginController@register');
+});
